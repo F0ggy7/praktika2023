@@ -13,7 +13,7 @@ async def get_data_search(type, search, status, region):
 
     if type == 1:
         
-        url_ur  = "https://bankrot.fedresurs.ru/backend/cmpbankrupts?searchString="+search+"&isActiveLegalCase="+status+"&regionId="+region+"&limit=15&offset=0"
+        url_ur  = "https://bankrot.fedresurs.ru/backend/cmpbankrupts?searchString="+search+"&isActiveLegalCase="+status+"&regionId="+region+"&limit=2&offset=0"
         response_ur = requests.get(url_ur, headers=headers_search)
         guids_ur = response_ur.json()
 
@@ -26,7 +26,7 @@ async def get_data_search(type, search, status, region):
             response_json.append("По вашему запросу не найдено ни одного совпадения, попробуйте изменить поисковую фразу")
 
     if type == 2:
-        url_fiz = "https://bankrot.fedresurs.ru/backend/prsnbankrupts?searchString="+search+"&isActiveLegalCase="+status+"&regionId="+region+"&limit=15&offset=0"
+        url_fiz = "https://bankrot.fedresurs.ru/backend/prsnbankrupts?searchString="+search+"&isActiveLegalCase="+status+"&regionId="+region+"&limit=2&offset=0"
         response_fiz = requests.get(url_fiz, headers=headers_search)
         guids_fiz = response_fiz.json()
 
