@@ -7,9 +7,8 @@ from routers import search as SearchRouter
 from routers import entity as EntityRouter
 
 
-
 app = FastAPI(
-    title="FedresursApi"
+    title="FedresursParseApi"
 )
 
 
