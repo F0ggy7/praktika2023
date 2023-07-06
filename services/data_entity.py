@@ -1,4 +1,5 @@
 import requests
+from proxy import proxy
 
 
 async def get_data_entity(guid, who):
@@ -10,7 +11,7 @@ async def get_data_entity(guid, who):
     if who == "ur":
         response_json_entity_ur = {}
         url_guid_ur = "https://fedresurs.ru/backend/companies/"+guid
-        response_entity_ur = requests.get(url_guid_ur, headers=headers_guid)
+        response_entity_ur = requests.get(url_guid_ur, headers=headers_guid, proxies=proxy)
         data = response_entity_ur.json()
 
         if "fullName" in data["companyInfo"]:
@@ -33,7 +34,7 @@ async def get_data_entity(guid, who):
     if who == "fiz": 
         response_json_entity_fiz = {}
         url_guid_fiz = "https://fedresurs.ru/backend/persons/"+guid
-        response_entity_fiz = requests.get(url_guid_fiz, headers=headers_guid)
+        response_entity_fiz = requests.get(url_guid_fiz, headers=headers_guid, proxies=proxy)
         data = response_entity_fiz.json()
     
         if "fullName" in data["info"]:

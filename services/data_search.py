@@ -1,6 +1,6 @@
 import requests
 from services.data_entity import get_data_entity
-
+from proxy import proxy
 
 async def get_data_search(type, search, status, region):
     headers_search = {
@@ -14,7 +14,7 @@ async def get_data_search(type, search, status, region):
     if type == 1:
         
         url_ur  = "https://bankrot.fedresurs.ru/backend/cmpbankrupts?searchString="+search+"&isActiveLegalCase="+status+"&regionId="+region+"&limit=2&offset=0"
-        response_ur = requests.get(url_ur, headers=headers_search)
+        response_ur = requests.get(url_ur, headers=headers_search, proxies=proxy)
         guids_ur = response_ur.json()
 
         if len(guids_ur["pageData"])!= 0:
@@ -27,7 +27,7 @@ async def get_data_search(type, search, status, region):
 
     if type == 2:
         url_fiz = "https://bankrot.fedresurs.ru/backend/prsnbankrupts?searchString="+search+"&isActiveLegalCase="+status+"&regionId="+region+"&limit=2&offset=0"
-        response_fiz = requests.get(url_fiz, headers=headers_search)
+        response_fiz = requests.get(url_fiz, headers=headers_search, proxies=proxy)
         guids_fiz = response_fiz.json()
 
         if len(guids_fiz["pageData"])!= 0:
