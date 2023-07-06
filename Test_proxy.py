@@ -7,4 +7,4 @@ proxies = {
 
 response = requests.get('https://ipinfo.io', proxies=proxies)
     
-print(response.text)
+print(response.text()   )
