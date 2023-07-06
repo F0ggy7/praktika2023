@@ -10,6 +10,14 @@ async def get_region_all():
     }
 
     url_regions = "https://bankrot.fedresurs.ru/backend/referencebook/regions"
-    response_regions = get(url_regions, headers=headers_search, proxies=proxy)
 
-    return(response_regions.json())
+    try:
+        response_regions = get(url_regions, headers=headers_search)
+        if response_regions.status_code != 200:
+            response={'Ошибка', response_regions.status_code}
+        else:
+            response = response_regions
+    except:
+        print('Неопознанная ошибкка')   
+
+    return(response .json())
