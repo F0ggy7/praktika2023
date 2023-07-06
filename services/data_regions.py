@@ -1,5 +1,5 @@
 from requests import get
-
+from proxy import proxy
 
 async def get_region_all():
     headers_search = {
@@ -9,6 +9,6 @@ async def get_region_all():
     }
 
     url_regions = "https://bankrot.fedresurs.ru/backend/referencebook/regions"
-    response_regions = get(url_regions, headers=headers_search)
+    response_regions = get(url_regions, headers=headers_search, proxies=proxy)
 
     return(response_regions.json())
